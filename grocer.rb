@@ -6,6 +6,7 @@ def consolidate_cart(cart)
     food_hash.each do |name, price_hash|      # for each food_hash, name and price_hash
       if new_hash[name].nil?                  # if our new hash does not have a name already, add name and count 1.
         new_hash[name] = price_hash.merge({:count => 1})
+      end
 end
 
 def apply_coupons(cart, coupons)

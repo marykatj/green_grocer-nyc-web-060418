@@ -19,8 +19,8 @@ def apply_coupons(cart, coupons)
   coupons.each do |coupon_hash|               # iterate through coupons array, to access a coupon_hash
     item = coupon_hash[:item]                 # establish variable 'item', which is the food in the coupon_hash
 
-    if !new_hash[item].nil? && new_hash[item][:count] >= coupon_hash[:num]     # if there is a food in the cart && 
-      temp = {"#{item} W/COUPON" => {         # cart item count is greater than the coupon food hash 
+    if !new_hash[item].nil? && new_hash[item][:count] >= coupon_hash[:num]     # if there is a food in the cart &&
+      temp = {"#{item} W/COUPON" => {         # cart item count is greater than the coupon food hash
         :price => coupon_hash[:cost],         # coupon line
         :clearance => new_hash[item][:clearance],
         :count => 1

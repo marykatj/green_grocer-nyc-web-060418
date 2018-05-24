@@ -1,10 +1,11 @@
 require 'pry'
 
 def consolidate_cart(cart)
-  hash = {}
-  cart.each do |item_hash|
-    items_hash.each do |name, price_hash|
-      if hash[name].nil?
+  new_hash = {}                               # set up empty hash
+  cart.each do |food_hash|                    # each item in the cart array is a food hash
+    food_hash.each do |name, price_hash|      # for each food_hash, name and price_hash
+      if new_hash[name].nil?                  # if our new hash does not have a name already, add name and count 1.
+        new_hash[name] = price_hash.merge({:count => 1})
 end
 
 def apply_coupons(cart, coupons)

@@ -15,7 +15,11 @@ def consolidate_cart(cart)
 end
 
 def apply_coupons(cart, coupons)
-  # code here
+  new_hash = {}
+  cart.each do |food, food_data|
+    food_data.each do |category, information|
+      if information == food
+        new_hash[cart][food]
 end
 
 def apply_clearance(cart)

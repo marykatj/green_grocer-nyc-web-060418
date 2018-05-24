@@ -15,29 +15,28 @@ def consolidate_cart(cart)
 end
 
 def apply_coupons(cart, coupons)
-  hash = cart                                 # hash = cart because we are just adding to the cart hash     
-  coupons.each do |coupon_hash|               # 
-    item = coupon_hash[:item]
+  new_hash = cart                                 # hash = cart because we are just adding to the cart hash
+  coupons.each do |coupon_hash|               # iterate through coupons array, to access a coupon_hash
+    item = coupon_hash[:item]                 # establish variable 'item', which is the food in the coupon_hash
 
-    if !hash[item].nil? && hash[item][:count] >= coupon_hash[:num]
-      temp = {"#{item} W/COUPON" => {
-        :price => coupon_hash[:cost],
-        :clearance => hash[item][:clearance],
+    if !new_hash[item].nil? && new_hash[item][:count] >= coupon_hash[:num]     # if there is a food in the cart && 
+      temp = {"#{item} W/COUPON" => {         # cart item count is greater than the coupon food hash 
+        :price => coupon_hash[:cost],         # coupon line
+        :clearance => new_hash[item][:clearance],
         :count => 1
         }
       }
 
-      if hash["#{item} W/COUPON"].nil?
-        hash.merge!(temp)
+      if new_hash["#{item} W/COUPON"].nil?        # if has does not have "(food) W/ COUPON", merge the hash with the coupon line
+        new_hash.merge!(temp)
       else
-        hash["#{item} W/COUPON"][:count] += 1
-        #hash["#{item} W/COUPON"][:price] += coupon_hash[:cost]
+        new_hash["#{item} W/COUPON"][:count] += 1  # otherwise, hash does have "(food) W/ COUPON", so just increase the counter
       end
 
-      hash[item][:count] -= coupon_hash[:num]
+      new_hash[item][:count] -= coupon_hash[:num]   # hash[food][:count] substract coupon_hash number
     end
   end
-  hash
+  new_hash
 end
 
 def apply_clearance(cart)

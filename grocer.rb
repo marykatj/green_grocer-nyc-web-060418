@@ -18,7 +18,7 @@ def apply_coupons(cart, coupons)
   new_hash = cart
   coupons.each do |coupon_hash|
     item = coupon_hash[:item]
-    
+
       if !new_hash[item].nil? && hash[item][:count] >= coupon_hash[:num]
         new_coupon = {"#{item} W/COUPON" => {
           :price => coupon_hash[:cost],

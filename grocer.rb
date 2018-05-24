@@ -1,5 +1,10 @@
+require 'pry'
+
 def consolidate_cart(cart)
-  cart.flatten
+  hash = {}
+  cart.each do |item_hash|
+    items_hash.each do |name, price_hash|
+      if hash[name].nil?
 end
 
 def apply_coupons(cart, coupons)

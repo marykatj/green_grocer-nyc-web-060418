@@ -64,6 +64,8 @@ def checkout(cart, coupons)
   total > 100 ? total * 0.9 : total
 end
 
+
+
 items =   [
       {"AVOCADO" => {:price => 3.00, :clearance => true}},
       {"AVOCADO" => {:price => 3.00, :clearance => true}},
@@ -87,5 +89,5 @@ coupons = [
       {:item => "BEER", :num => 2, :cost => 20.00},
       {:item => "CHEESE", :num => 2, :cost => 15.00}
     ]
-    
+
 checkout(items, coupons)

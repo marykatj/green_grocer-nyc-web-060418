@@ -18,6 +18,7 @@ def apply_coupons(cart, coupons)
   new_hash = cart
   coupons.each do |coupon_hash|
     item = coupon_hash[:item]
+    
       if !new_hash[item].nil? && hash[item][:count] >= coupon_hash[:num]
         new_coupon = {"#{item} W/COUPON" => {
           :price => coupon_hash[:cost],
@@ -37,7 +38,12 @@ def apply_coupons(cart, coupons)
 end
 
 def apply_clearance(cart)
-  # code here
+  cart.each do |item, price_hash|
+    if price_hash[:clearance] == true
+      price_hash[:price] = (price_hash[:price] * 0.8).round(2)
+    end
+  end
+  cart
 end
 
 def checkout(cart, coupons)
